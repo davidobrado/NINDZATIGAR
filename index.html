@@ -1,25 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>$NINDZATIGAR</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$NINDZATIGAR - The Wildest Memecoin Ever!</title>
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        background: black;
-      }
-      #root {
-        height: 100%;
-        width: 100%;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+        }
+        
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 5px;
+            padding: 5px;
+            opacity: 0.4;
+        }
+        
+        .video-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 2px dashed #f7931a;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+            animation: spin 10s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f7931a;
+            text-shadow: 0 0 10px rgba(247, 147, 26, 0.7);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 15px;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: #f7931a;
+            transform: scale(1.1);
+            display: inline-block;
+        }
+        
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #f7931a;
+        }
+        
+        .funny-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #ff9;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #f7931a;
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 10px 10px 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) rotate(3deg);
+            box-shadow: 0 10px 20px rgba(247, 147, 26, 0.3);
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid #f7931a;
+            color: #f7931a;
+        }
+        
+        .secondary-button:hover {
+            background-color: #f7931a;
+            color: #000000;
+            transform: translateY(-5px) rotate(-3deg);
+        }
+        
+        .features {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            color: #f7931a;
+        }
+        
+        .section-title::after {
+            content: '🔥';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f7931a;
+        }
+        
+        .feature-card p {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        
+        .feature-emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tokenomics {
+            padding: 40px 0;
+            background-color: rgba(10, 10, 10, 0.8);
+        }
+        
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .tokenomics-card {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+        
+        .tokenomics-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f7931a;
+            text-align: center;
+        }
+        
+        .tokenomics-card ul {
+            list-style: none;
+        }
+        
+        .tokenomics-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tokenomics-card li::before {
+            content: '💰';
+            margin-right: 10px;
+        }
+        
+        .meme-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .meme-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f7931a;
+            margin-bottom: 20px;
+        }
+        
+        .gif-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            background-color: #333;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: #f7931a;
+        }
+        
+        footer {
+            background-color: #000000;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 2px dashed #333;
+        }
+        
+        .social-links {
+            margin-bottom: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #f7931a;
+            transform: scale(1.2);
+        }
+        
+        .copyright {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .fun-fact {
+            background-color: rgba(247, 147, 26, 0.1);
+            border: 1px dashed #f7931a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .fun-fact h4 {
+            color: #f7931a;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/main.jsx"></script>
-  </body>
+</head>
+<body>
+    <!-- Video Background Grid -->
+    <div class="video-background">
+        <!-- Placeholders for 10 videos - Replace the paths with your own videos -->
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/api/placeholder/640/360" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="content">
+        <header>
+            <div class="logo">
+                <!-- $NINDZATIGAR Logo -->
+                <img src="/api/placeholder/80/80" alt="$NINDZATIGAR Logo">
+                <!-- Hinweis: Das Logo wurde hochgeladen und sollte hier eingefügt werden -->
+                <h1>$NINDZATIGAR</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#memes">Memes</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h2>$NINDZATIGAR</h2>
+            <div class="funny-subtitle">The memecoin that's half ninja, half tiger, all awesome!</div>
+            <p>We're not just another dog coin. We're the stealthiest, strongest, and silliest coin in the crypto jungle! 🥷🐯</p>
+            <div class="cta-buttons">
+                <a href="#buy" class="cta-button">Buy Now or Cry Later</a>
+                <a href="#whitepaper" class="cta-button secondary-button">Read Our "Paper"</a>
+            </div>
+            
+            <div class="fun-fact">
+                <h4>Fun Fact:</h4>
+                <p>If you pronounce $NINDZATIGAR five times fast while holding your crypto wallet, your gains might multiply! (Results not guaranteed, but worth a try!)</p>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-emoji">👑</span>
+                    <h3>Meme Royalty</h3>
+                    <p>We're the royal family of memes. The king has arrived, and he's wearing tiger stripes!</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-emoji">🚀</span>
+                    <h3>To The Moon</h3>
+                    <p>Our ninja skills will help us leap past the moon and straight to Mars!</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-emoji">💎</span>
+                    <h3>Diamond Paws</h3>
+                    <p>Tigers don't have paper hands. We HODL with our diamond paws!</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-emoji">🎯</span>
+                    <h3>Ninja Precision</h3>
+                    <p>We strike at the perfect moment. No random pumps, just calculated moves!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tokenomics" class="tokenomics">
+            <h2 class="section-title">Tokenomics</h2>
+            <div class="tokenomics-grid">
+                <div class="tokenomics-card">
+                    <h3>Token Distribution</h3>
+                    <ul>
+                        <li>50% Liquidity Pool</li>
+                        <li>20% Community Rewards</li>
+                        <li>15% Marketing & Memes</li>
+                        <li>10% Team (Locked for 1 year)</li>
+                        <li>5% Charity for Real Tigers</li>
+                    </ul>
+                </div>
+                <div class="tokenomics-card">
+                    <h3>Token Details</h3>
+                    <ul>
+                        <li>Name: NINDZATIGAR</li>
+                        <li>Symbol: $NINDZATIGAR</li>
+                        <li>Network: Ethereum</li>
+                        <li>Supply: 1,000,000,000 NINDZATIGAR</li>
+                        <li>Tax: 2% (1% Holders, 1% Burn)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="memes" class="meme-section">
+            <h2 class="section-title">Meme Generator</h2>
+            <p class="meme-text">Every purchase generates a new meme. It's science!</p>
+            <div class="gif-placeholder">[Super Funny Tiger Ninja GIF Here]</div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#twitter">Twitter</a>
+            <a href="#telegram">Telegram</a>
+            <a href="#discord">Discord</a>
+            <a href="#reddit">Reddit</a>
+        </div>
+        <p class="copyright">© 2025 $NINDZATIGAR. All rights reserved. Not financial advice. Just meme advice.</p>
+    </footer>
+</body>
 </html>
