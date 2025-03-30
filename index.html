@@ -133,12 +133,12 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 20%;
+            top: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(0,0,0,0) 70%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(0,0,0,0) 70%);
             z-index: 1;
         }
         
@@ -178,8 +178,7 @@
         }
         
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             background: linear-gradient(90deg, #ff0066 0%, #FF8C00 100%);
@@ -188,8 +187,9 @@
             background-clip: text;
             text-fill-color: transparent;
             font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             text-shadow: none;
+            margin: 0;
         }
         
         .funny-subtitle {
@@ -572,8 +572,11 @@
 
     <div class="content">
         <section class="hero">
-            <img src="logo.png" alt="$NINDZATIGAR Logo" class="hero-logo">
-            <h2>$NINDZATIGAR</h2>
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                <img src="logo.png" alt="$NINDZATIGAR Logo" class="hero-logo">
+                <h2>$NINDZATIGAR</h2>
+            </div>
+            <div class="tagline">The gold standard of crypto. Half ninja, half tiger, all profits.</div>
             <div class="cta-buttons">
                 <a href="https://pancakeswap.finance/swap?outputCurrency=0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988" target="_blank" class="cta-button">Buy Now</a>
                 <a href="#tokenomics" class="cta-button secondary-button">Learn More</a>
