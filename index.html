@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+/* Schwarzer Verlauf oben */
+        .top-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,8 +39,8 @@
             height: 100%;
             z-index: -1;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 0;
             padding: 0;
             opacity: 0.3;
@@ -40,11 +50,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            display: none; /* Initially hide all videos */
-        }
-        
-        .video-container.active {
-            display: block; /* Show only active videos */
+            transition: all 0.5s ease-in-out;
         }
         
         .video-container video {
@@ -123,8 +129,8 @@
         }
         
         .hero-logo {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             margin-bottom: 30px;
             animation: spin 20s linear infinite;
             filter: drop-shadow(0 0 15px rgba(255,215,0,0.5));
@@ -138,8 +144,8 @@
             top: 20%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(0,0,0,0) 70%);
             z-index: 1;
         }
@@ -471,6 +477,7 @@
 <body>
     <!-- Video Background Grid -->
     <div class="light-rays"></div>
+    <div class="top-gradient"></div>
     <div class="video-background">
         <!-- 10 Portrait videos with specific filenames -->
         <div class="video-container">
@@ -581,28 +588,34 @@
     </footer>
 
     <script>
-        // Video rotation script
+        // Video position swapping script
         document.addEventListener('DOMContentLoaded', function() {
             const videoContainers = document.querySelectorAll('.video-container');
             const totalVideos = videoContainers.length;
             
-            // Function to randomly select 3 videos
-            function selectRandomVideos() {
-                // First hide all videos
-                videoContainers.forEach(container => {
-                    container.classList.remove('active');
-                });
-                
-                // Create an array of indices and shuffle it
-                let indices = Array.from({length: totalVideos}, (_, i) => i);
-                shuffleArray(indices);
-                
-                // Select the first 3 indices and show those videos
-                for (let i = 0; i < 3; i++) {
-                    if (indices[i] !== undefined) {
-                        videoContainers[indices[i]].classList.add('active');
-                    }
+            // Function to randomly reposition videos
+            function repositionVideos() {
+                // Create an array of grid positions
+                let positions = [];
+                for (let i = 0; i < totalVideos; i++) {
+                    positions.push(i);
                 }
+                
+                // Shuffle the positions
+                shuffleArray(positions);
+                
+                // Assign new grid positions to each video container
+                videoContainers.forEach((container, index) => {
+                    const row = Math.floor(positions[index] / 5);
+                    const col = positions[index] % 5;
+                    
+                    container.style.gridRow = (row + 1) + ' / ' + (row + 2);
+                    container.style.gridColumn = (col + 1) + ' / ' + (col + 2);
+                    
+                    // Add a random scale effect for more visual interest
+                    const scale = 0.9 + Math.random() * 0.2; // Scale between 0.9 and 1.1
+                    container.style.transform = `scale(${scale})`;
+                });
             }
             
             // Fisher-Yates shuffle algorithm
@@ -614,11 +627,11 @@
                 return array;
             }
             
-            // Initially select random videos
-            selectRandomVideos();
+            // Initially position videos
+            repositionVideos();
             
-            // Change videos every 10 seconds
-            setInterval(selectRandomVideos, 10000);
+            // Reposition videos every 8 seconds
+            setInterval(repositionVideos, 8000);
         });
     </script>
 </body>
