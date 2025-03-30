@@ -90,6 +90,13 @@
             text-transform: uppercase;
         }
         
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            animation: spin 20s linear infinite;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -176,6 +183,18 @@
         .secondary-button:hover {
             background-color: gold;
             color: #000000;
+        }
+        
+        .social-button {
+            background-color: #333;
+            border: 2px solid #333;
+            color: gold;
+        }
+        
+        .social-button:hover {
+            background-color: #444;
+            border-color: #444;
+            color: gold;
         }
         
         .features {
@@ -441,12 +460,15 @@
         </header>
 
         <section class="hero">
+            <img src="logo.png" alt="$NINDZATIGAR Logo" class="hero-logo">
             <h2>$NINDZATIGAR</h2>
             <div class="funny-subtitle">Luxury Memecoin | Est. 2025</div>
             <p>The gold standard of crypto. Half ninja, half tiger, all profits.</p>
             <div class="cta-buttons">
-                <a href="#buy" class="cta-button">Buy Now</a>
-                <a href="#whitepaper" class="cta-button secondary-button">Learn More</a>
+                <a href="https://pancakeswap.finance/swap?outputCurrency=0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988" target="_blank" class="cta-button">Buy Now</a>
+                <a href="#tokenomics" class="cta-button secondary-button">Learn More</a>
+                <a href="https://t.me/+vO8k7FSMhSw0ZjI0" target="_blank" class="cta-button social-button">Telegram</a>
+                <a href="https://www.instagram.com/nindzatigarr/" target="_blank" class="cta-button social-button">Instagram</a>
             </div>
         </section>
 
@@ -473,9 +495,10 @@
                     <h3>Token Details</h3>
                     <ul>
                         <li>Name: $NINDZATIGAR</li>
-                        <li>Network: Ethereum</li>
-                        <li>Supply: 1B NINDZATIGAR</li>
-                        <li>Tax: 2% (Buy/Sell)</li>
+                        <li>Chain: BNB Smart Chain (BSC)</li>
+                        <li>Supply: 1,000,000,000 $NINDZATIGAR</li>
+                        <li>Tax: 0% Buy / 0% Sell</li>
+                        <li>Contract: 0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988</li>
                     </ul>
                 </div>
             </div>
@@ -484,8 +507,8 @@
 
     <footer>
         <div class="social-links">
-            <a href="#twitter">Twitter</a>
-            <a href="#telegram">Telegram</a>
+            <a href="https://www.instagram.com/nindzatigarr/" target="_blank">Instagram</a>
+            <a href="https://t.me/+vO8k7FSMhSw0ZjI0" target="_blank">Telegram</a>
         </div>
         <p class="copyright">© 2025 $NINDZATIGAR. All rights reserved.</p>
     </footer>
