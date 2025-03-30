@@ -1,16 +1,30 @@
-<!DOCTYPE html>
+p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$NINDZATIGAR - Luxury Memecoin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Standard-Absatzformatierung */
+        p {
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
         }
         
         body {
@@ -134,8 +148,8 @@
             top: 20%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
+            width: 200px;
+            height: 200px;
             background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(0,0,0,0) 70%);
             z-index: 1;
         }
@@ -176,20 +190,24 @@
         }
         
         .hero h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #FFD700;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .funny-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: #FFD700;
             margin-bottom: 20px;
             font-weight: 300;
             letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .hero p {
@@ -205,13 +223,14 @@
             background-color: #FFD700;
             color: #000000;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
             border-radius: 5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
             margin: 0 10px 10px 10px;
             letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .cta-button:hover {
@@ -525,8 +544,6 @@
         <section class="hero">
             <img src="logo.png" alt="$NINDZATIGAR Logo" class="hero-logo">
             <h2>$NINDZATIGAR</h2>
-            <div class="funny-subtitle">Luxury Memecoin | Est. 2025</div>
-            <p>The gold standard of crypto. Half ninja, half tiger, all profits.</p>
             <div class="cta-buttons">
                 <a href="https://pancakeswap.finance/swap?outputCurrency=0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988" target="_blank" class="cta-button">Buy Now</a>
                 <a href="#tokenomics" class="cta-button secondary-button">Learn More</a>
