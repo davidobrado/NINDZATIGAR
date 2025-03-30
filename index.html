@@ -1,4 +1,15 @@
-p {
+.cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }        p {
             line-height: 1.6;
             margin-bottom: 15px;
             font-family: 'Playfair Display', serif;
@@ -18,14 +29,7 @@ p {
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Standard-Absatzformatierung */
-        p {
-            line-height: 1.5;
-            margin-bottom: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-        }
+
         
         body {
             background-color: #000;
@@ -194,10 +198,14 @@ p {
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #FFD700;
+            background: linear-gradient(90deg, #ff0066 0%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: none;
         }
         
         .funny-subtitle {
@@ -220,8 +228,8 @@ p {
         .cta-button {
             display: inline-block;
             padding: 12px 25px;
-            background-color: #FFD700;
-            color: #000000;
+            background: linear-gradient(90deg, #ff0066 0%, #FF8C00 100%);
+            color: #ffffff;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
@@ -235,30 +243,68 @@ p {
         
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 0, 102, 0.3);
+            background: linear-gradient(90deg, #FF8C00 0%, #ff0066 100%);
         }
         
         .secondary-button {
-            background-color: transparent;
-            border: 2px solid #FFD700;
-            color: #FFD700;
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #ff0066, #FF8C00) 1;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .secondary-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, #ff0066 0%, #FF8C00 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: 3px;
         }
         
         .secondary-button:hover {
-            background-color: #FFD700;
-            color: #000000;
+            color: #ffffff;
+        }
+        
+        .secondary-button:hover::before {
+            opacity: 1;
         }
         
         .social-button {
             background-color: #333;
-            border: 2px solid #333;
-            color: #FFD700;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(255, 0, 102, 0.7) 0%, rgba(255, 140, 0, 0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
         
         .social-button:hover {
-            background-color: #444;
-            border-color: #444;
-            color: #FFD700;
+            color: #ffffff;
+        }
+        
+        .social-button:hover::before {
+            opacity: 1;
         }
         
         .features {
@@ -545,10 +591,14 @@ p {
             <img src="logo.png" alt="$NINDZATIGAR Logo" class="hero-logo">
             <h2>$NINDZATIGAR</h2>
             <div class="cta-buttons">
-                <a href="https://pancakeswap.finance/swap?outputCurrency=0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988" target="_blank" class="cta-button">Buy Now</a>
-                <a href="#tokenomics" class="cta-button secondary-button">Learn More</a>
-                <a href="https://t.me/+vO8k7FSMhSw0ZjI0" target="_blank" class="cta-button social-button">Telegram</a>
-                <a href="https://www.instagram.com/nindzatigarr/" target="_blank" class="cta-button social-button">Instagram</a>
+                <div class="button-row">
+                    <a href="https://pancakeswap.finance/swap?outputCurrency=0x0213A5312168DEeA2d7c87DCdb61e38b2fA32988" target="_blank" class="cta-button">Buy Now</a>
+                    <a href="#tokenomics" class="cta-button secondary-button">Learn More</a>
+                </div>
+                <div class="button-row">
+                    <a href="https://t.me/+vO8k7FSMhSw0ZjI0" target="_blank" class="cta-button social-button">Telegram</a>
+                    <a href="https://www.instagram.com/nindzatigarr/" target="_blank" class="cta-button social-button">Instagram</a>
+                </div>
             </div>
         </section>
 
